@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import steps.StepModelRepository;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
 
@@ -32,6 +31,7 @@ public class RepositoryTest extends TestBase {
         $("#issue_"+ issueNumber+"_link")
                 .should(Condition.exist)
                 .shouldHave(text(issueTitle));
+        takeScreenshot();
     }
 
     @Test
@@ -57,6 +57,7 @@ public class RepositoryTest extends TestBase {
             $("#issue_"+ issueNumber+"_link")
                     .should(Condition.exist)
                     .shouldHave(text(issueTitle));
+            takeScreenshot();
 
         });
     }
@@ -72,5 +73,6 @@ public class RepositoryTest extends TestBase {
         steps.selectRepository(repositoryName);
         steps.clickIssueTab();
         steps.checkIssueTitle(issueNumber, issueTitle);
+        steps.takeScreenshot();
     }
 }
