@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id'io.qameta.allure' version '2.11.2'
+}
+
+allure {
+    report {
+        version.set("2.27.0")
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set("2.27.0")
+            }
+        }
+    }
+}
+
+group = 'com.anavla777'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation (
+            "com.codeborne:selenide:7.3.1",
+            "org.junit.jupiter:junit-jupiter:5.10.2",
+            'io.qameta.allure:allure-selenide:2.27.0'
+    )
+    runtimeOnly 'org.aspectj:aspectjweaver:1.9.22.1'
+}
+
+test {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
