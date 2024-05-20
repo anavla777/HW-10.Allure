@@ -58,7 +58,6 @@ public class RepositoryTest extends TestBase {
                     .should(Condition.exist)
                     .shouldHave(text(issueTitle));
             takeScreenshot();
-
         });
     }
 
